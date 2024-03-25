@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "thumbnail": "/images/mainnet.png",
+    "title": "Selendra Mainnet",
+    "desc": "A robust, scalable infrastructure empowering developers and users with seamless transactions and decentralized applications.",
+    "link": "https://portal.selendra.org/#/explorer"
+  },
+  {
+    "id": "2",
+    "thumbnail": "/images/testnet.png",
+    "title": "Selendra Testnet",
+    "desc": "A sandbox environment to experiment, refine, and validate your decentralized applications.",
+    "link": "https://portal.selendra.org/?rpc=wss%3A%2F%2Frpc0-testnet.selendra.org#/explorer"
+  }
+]

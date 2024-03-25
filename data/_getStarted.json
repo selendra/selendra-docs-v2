@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "thumbnail": "/images/bitriel.png",
+    "title": "Bitriel Wallet",
+    "desc": "Bitriel is a self-custody digital wallet that supports cross-chain multi-assets, including crypto assets and NFTs.",
+    "link": "https://www.bitriel.com/"
+  },
+  {
+    "id": "2",
+    "thumbnail": "/images/weteka.jpg",
+    "title": "Weteka",
+    "desc": "An innovative digital educational platform tailored for the next generation of both teachers and learners.",
+    "link": "https://weteka.org/"
+  },
+  {
+    "id": "3",
+    "thumbnail": "/images/identity.png",
+    "title": "Digital ID",
+    "desc": "Decentralizes identity verification, ensuring privacy, security, and user control, while providing seamless authentication.",
+    "link": ""
+  },
+  {
+    "id": "4",
+    "thumbnail": "/images/reward.png",
+    "title": "Selendra Loyalty Program",
+    "desc": "Interoperable Loyalty Rewards on Selendra Blockchain.",
+    "link": ""
+  }
+]

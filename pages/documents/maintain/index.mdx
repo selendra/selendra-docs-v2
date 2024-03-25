@@ -1,0 +1,36 @@
+# Node Endpoints
+
+One way to have your own direct connection to the network is by running your own node, It gives you more control and privacy.
+
+Another option is to use Selendra's public endpoints. These are like shortcuts that let you connect to the network without needing to run your own node. It's convenient and easy, especially if you're just getting started.
+
+#### Main Network
+
+| **Network** | **URL**                 |
+| ----------- | ----------------------- |
+| Mainnet 0   | wss://rpc0.selendra.org |
+| Mainnet 1   | wss://rpc1.selendra.org |
+
+#### Test Network
+
+| **Network** | **URL**                         |
+| ----------- | ------------------------------- |
+| Testnet 0   | wss://rpc0-testnet.selendra.org |
+| Testnet 1   | wss://rpc1-testnet.selendra.org |
+
+**An Example using Polkadot-JS**
+
+To connect to the Selendra node, use the endpoint in your JavaScript apps like so:
+
+```javascript
+
+// Using the Polkadot Mainnet Endpoint
+const { ApiPromise, WsProvider } = require('@polkadot/api');
+async () => {
+  // Construct a provider with the endpoint URL
+  const provider = new WsProvider('wss://rpc.selendra.io/');
+  // Create an API instance for Polkadot
+  const api = await ApiPromise.create({ provider });
+  // ...
+
+```

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "thumbnail": "/images/documentation.png",
+    "title": "Documentation",
+    "desc": "Explore a comprehensive guide to deepen your understanding and quickly get up to speed on building applications on Selendra.",
+    "link": "/documents"
+  },
+  {
+    "id": "2",
+    "thumbnail": "/images/node.png",
+    "title": "Run Selendra Node",
+    "desc": "Become an integral part of our blockchain ecosystem by setting up and running your own blockchain node.",
+    "link": "https://github.com/selendra/selendrachain/releases/tag/v0.2.3"
+  },
+  {
+    "id": "3",
+    "thumbnail": "/images/sdk.png",
+    "title": "Bitriel SDK",
+    "desc": "Coming Soon!",
+    "link": "/documents"
+  }
+]

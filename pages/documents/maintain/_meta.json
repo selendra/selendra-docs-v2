@@ -1,0 +1,6 @@
+{
+  "index": "Node Endpoints",
+  "rpcnode": "Run A RPC Node",
+  "fullnode": "Run a Full Node",
+  "validatornode": "Run a Validator Node"
+}

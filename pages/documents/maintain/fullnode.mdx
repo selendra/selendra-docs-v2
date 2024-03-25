@@ -1,0 +1,15 @@
+# Run A Full Node
+
+When creating dApps or products on Substrate-based chains like Selendra, having the option to run your own backend node is key! This way, you can rely on your infrastructure, which offer more control and security.
+
+To run a Full Node, simply follow this [guide](/documents/maintain/fullnode/docker) then make sure you add:
+
+```bash
+--pruning archive
+```
+
+And remove:
+
+```bash
+—-validator
+```

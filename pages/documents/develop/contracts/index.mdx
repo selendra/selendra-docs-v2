@@ -1,0 +1,117 @@
+## Overview
+
+To create smart contracts on the Selendra blockchain, developers require an environment that simplifies the development process, provides useful tools and features, and streamlines the testing and debugging of smart contracts.
+
+For a quick start, we’re using Remix IDE, a powerful and popular Integrated Development Environment (IDE) for Solidity Smart Contract Development.
+
+## Getting Started with Selendra Remix IDE
+
+In this section, we will guide you through the process of getting started with Remix IDE for Solidity Smart Contract Development. By the end of this section, you will be able to access the Selendra Remix IDE, understand the interface, and set up your development environment.
+
+#### Navigate to [remix.selendra.org](https://remix.selendra.org/)
+
+![Remix IDE](/images/sel-remix.png)
+
+#### Connect to Selendra Network
+
+First, create a wallet on [Metamask](https://metamask.io/download/).
+
+To connect your wallet to Selendra Network, click on the add network section below.
+
+![Add Sel Network](/images/add-network.png)
+
+## Run your contract
+
+#### Simple Contract
+
+We’re going to start with the 1_Storage.sol smart contract found under the contacts folder in the default workspace tab.
+
+![Storage Contract](/images/storage-contract.png)
+
+Don’t worry if this is your first time looking at solidity or code for that matter, we’re going to walk through this smart contract step by step.
+
+```solidity
+pragma solidity ≥0.7.0 <0.9.0;
+```
+
+All smart contracts start with this line which serves to specify to the compiler which version of solidity this contract should target. For this contract, we’re targeting versions greater or equal to 0.7.0 and less than 0.9.0.
+
+```solidity
+contract Storage {...}
+```
+
+All smart contracts must begin with the `contract` keyword followed by the name of the contract. This contract is called Storage.
+
+```solidity
+uint256 number;
+```
+
+This is a variable that stores an unsigned integer up to 256 bits. An unsigned integer means a positive number with no decimal points. 256 bits represent how big this integer can be, in this case, the max size in solidity.
+
+```solidity
+function store(uint256 num) public { number = num }
+```
+
+These lines represent a function that takes in one parameter, `uint256 num` , and sets the variable `number` from Line 12 to that value. A function is a stored piece of code that can be reused and called by other code and sometimes users of the smart contract. The `public` tag indicates anyone outside of the contract can call this function.
+
+```solidity
+function retrieve() public view returns (uint256) { return number }
+```
+
+You can probably guess that this function just returns the variable `number` . This function is `public view` , which indicates it’s open for anyone to call and does not modify any contract variables. In solidity, you also need to specify what a function returns if it does so. In this case `number` is a uint256 so we specify that at the end of the function signature.
+
+#### Compilation
+
+![Storage Contract](/images/remix-compile.png)
+
+Head over to the third tab on the left-hand navigation bar and you should be presented with the above screen. Compiling a contract is the process of turning human-readable solidity code into Bytecode that the Ethereum Virtual Machine (EVM) can process.
+
+Make sure the Compiler version is set within the range specified by the `pragma` , 0.8.7 is fine. You also want to make sure the Contract chosen is `Storage (1_Storage.sol)`.
+
+Once you have your parameters set, you can go ahead and click the blue compile `button` and wait for the green checkmark to pop up. If there are issues, Remix will let you know.
+
+#### Deployment
+
+> **Note:** To deploy a contract to Selendra network, you need to get SEL for gas fee. [Get SEL!]()
+
+![Deploy](/images/remix-deploy.png)
+
+Head over to the fourth tab. All the deployment processes will be here.
+
+**Environment:** Select `Selendra - Metamask`. This specifies the contract will be deployed to Selendra Network.
+
+**Account:** This is the account from where the contract will be deployed. It will be automatically added when you added the `Selendra - Metamask` environment.
+
+**Gas Limit:** The max amount of gas you’re willing to spend to deploy the contract or interact with a contract.
+
+**Value:** Some smart contract functions require you to send SEL to them. An example of this is minting functions for NFTs. You can select the amount to send in this tab here.
+
+**Contract:** The contract you are targeting to deploy. In our case, this should be `Storage.`
+
+Lastly, the **At Address** button allows you to point Remix to a contract that's already deployed in the case where you would want to interact with a live contract from Remix.
+
+Okay, we’re ready to deploy! Hit the orange `Deploy` button and it should show up under the Deployed Contracts section.
+
+#### Interaction
+
+![Deployed](/images/remix-deployed.png)
+
+Once deployed, you can interact with a smart contract through Remix. Try specifying a number and hitting the `store` button. You should see something happen under the terminal tab.
+
+![Terminal](/images/remix-deployed2.png)
+
+If you can’t see the terminal, there should be a pull-up tab at the bottom of the screen you can use to bring it up. The terminal is where you can see the output of any transaction you send, including the contract creation transaction. Some things to notice from this transaction.
+
+**Transaction Hash:** the unique id of the transaction
+
+**From:** the account that executed the transaction
+
+**To:** the contract address the transaction was sent to
+
+**Gas:** the gas used by the contract
+
+**Decoded input:** the data that was sent to the contract in the transaction. In our case this was 10 , the number to be stored in the contract.
+
+The last thing to do is retrieve the number from the contract. Go ahead and click the retrieve button and you should see the number that you stored pop up!
+
+Congratulation! You just built your first Smart Contract!

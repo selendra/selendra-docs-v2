@@ -1,0 +1,22 @@
+{
+  "index": {
+    "title": "Home",
+    "type": "page",
+    "theme": {
+      "layout": "full",
+      "footer": false
+    }
+  },
+  "about": {
+    "title": "Ecosystem",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "documents": {
+    "title": "Documentation",
+    "type": "page",
+    "href": "/documents"
+  }
+}
