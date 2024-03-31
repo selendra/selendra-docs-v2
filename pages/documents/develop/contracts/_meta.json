@@ -1,3 +1,4 @@
 {
-  "index": "EVM"
+  "evm": "EVM",
+  "wasm": "WASM"
 }
