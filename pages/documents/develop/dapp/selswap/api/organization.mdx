@@ -1,0 +1,167 @@
+# Organization
+
+## Organization Creation
+
+This API endpoint allows authenticated users to create a new organization.
+
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/account/create/pin
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| name | string | The desired name for the organization. | Yes |
+| logo | String (URL) |The URL of the organization's logo image. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  name: "selendra",
+  logo: "https://gateway.selendra.org/public/images/selendra.png",
+});
+
+let config = {
+  method: "post",
+  url: "https://gateway.selendra.org/org/create",
+  headers: {
+    Authorization: token,
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "id": "org_12345",
+    "name": "selendra",
+    "logo": "https://gateway.selendra.org/public/images/selendra.png",
+    "owner_id": "user_abcde",
+    "merchant_id": "myawesomeorganization",
+    "api_key": "your_api_key"
+  }
+}
+```
+
+```
+Note
+
+data.id: Unique identifier for the created organization.
+data.name: The name of the organization.
+data.logo: The URL of the organization's logo image.
+data.owner_id: The user ID of the organization owner.
+data.merchant_id: A unique identifier generated from the organization name.
+data.api_key: The API key for the newly created organization.
+data.token_id: An internal identifier assigned to the organization.
+```
+
+**Response Example (Error):**
+
+```json
+{
+  "status": "ERROR",
+  "message": "name and logo are required"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - This indicates that the request body is invalid or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 409: Conflict - Organization name already exists.
+
+## Whitelist Partners
+
+This API endpoint allows authenticated users to add a partner organization to their whitelist.
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/org/add/whitelist
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| api_key | string | The API key of the organization. | Yes |
+| merchant_id | String (URL) |The merchant ID of the organization. | Yes |
+| partner_token_id | Number | The token ID of the partner organization to be added to the whitelist. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  api_key: "39902810-bda0-49a6-9301-979ec7e29a52",
+  merchant_id: "koompi",
+  partner_token_id: "2",
+});
+
+let config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "https://gateway.selendra.org/org/add/whitelist",
+  headers: {
+    Authorization: token,
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "message": "Partner ID added successfully"
+}
+```
+
+**Response Example (Error):**
+
+```json
+{
+  "status": "ERROR",
+  "message": "Invalid merchant_id or api_key"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - Invalid request body or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - Partner token not found, or other data related errors.
+- 409: Conflict - Partner already added, or attempting to whitelist own token.
+
+---

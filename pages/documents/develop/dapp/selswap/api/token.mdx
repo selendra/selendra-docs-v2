@@ -1,0 +1,317 @@
+## Token
+
+### Mint
+
+This API endpoint allows authenticated users to mint new tokens for their organization. (**Only owner of organization can mint it**)
+
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/token/mint
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| api_key | string | The API key of the organization. | Yes |
+| merchant_id | String (URL) |The merchant ID of the organization. | Yes |
+| amount | Number | The number of tokens to be minted. | Yes |
+|receiver_address | String | The Ethereum address of the recipient for the minted tokens.| Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  api_key: "ff73dc8c-8fba-48b3-b1b2-6482d5933729",
+  merchant_id: "selendra",
+  amount: "1000",
+  receiver_address: "0x604b2f75d6ef9bd68A97Fb3C6c614fe8FE11bdfc",
+});
+
+let config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "https://gateway.selendra.org/token/mint",
+  headers: {
+    Authorization: token,
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "message": "token minted successfully"
+}
+```
+
+**Response Example (Error):**
+
+```json
+{
+  "status": "ERROR",
+  "message": "Invalid merchant_id or token_id"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - Invalid request body or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - Organization or token data not found.
+
+### Swap
+
+This API endpoint allows authenticated users to swap tokens between organizations.
+
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/token/swap
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| from_token | Number | The token ID of the token being exchanged (from organization). | Yes |
+| to_token | Number |The token ID of the desired token (to organization). | Yes |
+| amount | Number | The amount of tokens to be swapped. | Yes |
+
+**Request Header:**
+| Field | Description | Required |
+| -- | -- | -- |
+| pin | The user's PIN for authorization (swap from_token to to_token). | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  from_token: "1",
+  to_token: "2",
+  amount: "100",
+});
+
+let config = {
+  method: "post",
+  url: "https://gateway.selendra.org/token/swap",
+  headers: {
+    Authorization: token,
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "message": "Swapped successfully"
+}
+```
+
+**Response Example (Error):**
+
+```json
+{
+  "status": "ERROR",
+  "message": "Invalid partner_token_id"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - Invalid request body or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - Organization or token data not found.
+
+**Security Considerations:**
+
+- This endpoint requires authentication to protect user accounts.
+- User PINs are used for authorization, highlighting the importance of strong PINs.
+
+**Additional Notes:**
+
+- This endpoint interacts with a blockchain smart contract to perform the token swap between organizations.
+- The specific implementation for swapping tokens (e.g., `getContract(user_private_key).swap(1, 2, 100)`) might need to be adjusted based on your actual smart contract functions.
+
+### Transfer
+
+**Description:** This API endpoint allows authenticated users to transfer their organization's tokens to another wallet address.
+
+**Authentication:** This endpoint requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/token/swap
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| wallet_address | String | The Ethereum address of the recipient for the tokens. | Yes |
+| token_id | Number |The token ID of the organization's token to be transferred. | Yes |
+| amount | Number | The amount of tokens to be swapped. | Yes |
+
+**Request Header:**
+| Field | Description | Required |
+| -- | -- | -- |
+| pin | The user's PIN for authorization (swap from_token to to_token). | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  wallet_address: "0xAbCeDE5c2B35214ca7aFA98b29Ff937C737D5b2a",
+  token_id: "1",
+  amount: "10000",
+});
+
+let config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "http://localhost:3000/token/transfer",
+  headers: {
+    Authorization: token,
+    pin: "1111",
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "data": "Points transfer successfully."
+}
+```
+
+**Response Example (Error):**
+
+```json
+{ "status": "ERROR", "message": "User not found" }
+```
+
+**Error Codes:**
+
+- 400: Bad Request - Invalid request body or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - User data not found.
+
+**Additional Notes:**
+
+- This endpoint interacts with a blockchain smart contract to transfer tokens from the user's organization to the specified recipient address.
+- The amount is likely multiplied by 100 before the transfer to handle decimals (depending on your token implementation).
+
+### Balance
+
+This API endpoint allows anyone to retrieve the balance of a specific token for a given wallet address.
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/token/balance
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Required | Required |  
+| -- | -- | -- | -- |
+| token_id | Number | The token ID of the organization's token. | Yes |
+|wallet_address| String | The Ethereum address of the wallet to check the balance. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  token_id: "1",
+  wallet_address: "0xAbCeDE5c2B35214ca7aFA98b29Ff937C737D5b2a",
+});
+
+let config = {
+  method: "post",
+  url: "https://gateway.selendra.org/token/balance",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "wallet_address": "0x1234567890Abcdef1234567890Abcdef123456789",
+    "balance": "100.00" // Balance formatted with 2 decimal places
+  }
+}
+```
+
+**Response Example (Error):**
+
+```json
+{
+  "status": "ERROR",
+  "message": "Error fetching token balance"
+}
+```
+
+**Notes:**
+
+- This endpoint does not require authentication, making the token balance information publicly accessible.
+- The balance is formatted with 2 decimal places using `ethers.formatUnits(balance, 2)`.

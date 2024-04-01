@@ -1,0 +1,281 @@
+# Account
+
+## Create New User
+
+To use the API you must target to correct URL, following are the URL for respective environment.
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/account/create
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| username | string | The desired username for the new account. | Yes |
+| password | string |The password for the new account. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  username: "myname",
+  password: "mystrongpassword",
+});
+
+let config = {
+  method: "post",
+  url: "https://gateway.selendra.org/account/create",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```javascript
+{
+  "status": "SUCCESS",
+  "data": {
+    "username": "myname",
+  }
+}
+```
+
+**Response Example (Error):**
+
+```javascript
+{
+  "status": "ERROR",
+  "message": "username must be between 3 and 30 characters"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - This indicates that the request body is invalid or missing required fields.
+- 409: Conflict - Username already exists.
+
+## Create user PIN
+
+This API endpoint allows authenticated users to create a PIN and associated wallet.
+**Authentication:** This endpoint requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/account/create/pin
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| username | string | The username of the authenticated user. | Yes |
+| pin | string |The desired PIN for the user account. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  username: "myname",
+  pin: "1111",
+});
+
+let config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "https://gateway.selendra.org/account/create/pin",
+  headers: {
+    Authorization: token,
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```javascript
+{
+  "status": "SUCCESS",
+  "message": "PIN created successful"
+}
+```
+
+**Response Example (Error):**
+
+```javascript
+{
+  "status": "ERROR",
+  "message": "username not found"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - This indicates that the request body is invalid or missing required fields.
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - Username not found or other data related errors.
+
+## Login
+
+This API endpoint allows users to login to the system.
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/account/login
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Body:**
+| Field | Type | Description | Required |
+| -- | -- | -- | -- |
+| username | String | The username of the user. | Yes |
+| password | string |The password of the user. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+let data = JSON.stringify({
+  username: "user",
+  password: "user",
+});
+
+let config = {
+  method: "post",
+  url: "https://gateway.selendra.org/account/login",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  data: data,
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```javascript
+{
+  "message": "Login successful",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+**Response Example (Error):**
+
+```javascript
+{
+  "message": "Invalid username or password"
+}
+```
+
+**Error Codes:**
+
+- 400: Bad Request - Invalid or missing fields in the request body.
+- 401: Unauthorized - Login failed due to invalid credentials.
+- 404: Not Found - User not found with the provided username.
+- 500: Internal Server Error - Unexpected error during login process.
+
+## Retrieving User Information
+
+This endpoint allows authenticated users to retrieve their basic user information.
+
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
+
+**_API ENDPOINTS_**
+
+- URL: https://gateway.selendra.org/account/me
+- Method: POST
+- Content-Type: 'application/json'
+
+**Request Header:**
+| Field | Description | Required |
+| -- | -- | -- |
+| Authorization | The token is provided by the system when the user logs in successfully. | Yes |
+
+**API example**
+
+```javascript
+const axios = require("axios");
+
+let config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "https://gateway.selendra.org/account/me",
+  headers: {
+    Authorization: token,
+  },
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+**Response Example (Success):**
+
+```javascript
+{
+  "status": "success",
+  "data": {
+    "_id": "62c0deef54a054a554a35156",
+    "username": "johndoe",
+    "wallet_address": "0x1234567890Abcdef1234567890Abcdef123456789",
+    "createdAt": "2024-03-25T04:15:34.567Z"
+  }
+}
+```
+
+**Response Example (Error):**
+
+```javascript
+{
+  "success": false,
+  "message": "User not found"
+}
+```
+
+**Error Codes:**
+
+- 401: Unauthorized - Authentication failed (invalid or missing access token).
+- 404: Not Found - User not found.
+- 500: Internal Server Error - Unexpected error retrieving user information.
+
+---
