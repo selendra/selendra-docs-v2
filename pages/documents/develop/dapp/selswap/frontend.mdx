@@ -1,4 +1,4 @@
-## Steps to Build the App:
+## Connect API to Frontend
 
 #### Step 1: Clone Project
 
@@ -42,26 +42,32 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
-      export const createWallet = async (username: string, password: string) => {
-          try {
-              const response = await axios.post(`https://gateway.selendra.org/account/create`, {
-                  username: username,
-                  password: password,
-              });
+      ```javascript
+      export const createWallet = async (
+        username: string,
+        password: string
+      ) => {
+        try {
+          const response = await axios.post(
+            `https://gateway.selendra.org/account/create`,
+            {
+              username: username,
+              password: password,
+            }
+          );
 
-              return response.data;
-          } catch (error) {
-              throw error;
-          }
+          return response.data;
+        } catch (error) {
+          throw error;
+        }
       };
       ```
 
     - Screenshot:
 
-      |         Screen Register          |
-      | :------------------------------: |
-      | ![Screen 6](/images/screen6.png) |
+      |                                Screen Register                                |
+      | :---------------------------------------------------------------------------: |
+      | <img src="/images/screen6.png" alt="Register User" height="500" width="100"/> |
 
 2.  **Create User PIN**:
 
@@ -120,18 +126,21 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
+      ```javascript
       export const loginWallet = async (username: string, password: string) => {
-          try {
-              const response = await axios.post("https://gateway.selendra.org/account/login", {
-                  username: username,
-                  password: password,
-              });
+        try {
+          const response = await axios.post(
+            "https://gateway.selendra.org/account/login",
+            {
+              username: username,
+              password: password,
+            }
+          );
 
-              return response.data;
-          } catch (error) {
-              throw error;
-          }
+          return response.data;
+        } catch (error) {
+          throw error;
+        }
       };
       ```
 
@@ -155,22 +164,27 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
-      export const fetchBalance = async (tokenId: string, walletAddress: string): Promise<BalanceType> => {
-          try {
-              const response = await axios.post("https://gateway.selendra.org/token/balance", {
-                  token_id: tokenId,
-                  wallet_address: walletAddress,
-              });
+      ```javascript
+      export const fetchBalance = async (
+        tokenId: string,
+        walletAddress: string
+      ): Promise<BalanceType> => {
+        try {
+          const response = await axios.post(
+            "https://gateway.selendra.org/token/balance",
+            {
+              token_id: tokenId,
+              wallet_address: walletAddress,
+            }
+          );
 
-              const balanceData: BalanceType = response.data["data"];
+          const balanceData: BalanceType = response.data["data"];
 
-              return balanceData;
-          } catch (error) {
-              throw error;
-          }
+          return balanceData;
+        } catch (error) {
+          throw error;
+        }
       };
-
       ```
 
     - Screenshot:
@@ -199,28 +213,34 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
-      export const swapPoint = async (authToken: string, pin: string, fromToken: string, toToken: string, amount: string) => {
-          try {
-              const response = await axios.post(
-                  "https://gateway.selendra.org/token/swap",
-                  {
-                      from_token: fromToken,
-                      to_token: toToken,
-                      amount: amount,
-                  },
-                  {
-                      headers: {
-                          Authorization: authToken,
-                          pin: pin,
-                      },
-                  },
-              );
+      ```javascript
+      export const swapPoint = async (
+        authToken: string,
+        pin: string,
+        fromToken: string,
+        toToken: string,
+        amount: string
+      ) => {
+        try {
+          const response = await axios.post(
+            "https://gateway.selendra.org/token/swap",
+            {
+              from_token: fromToken,
+              to_token: toToken,
+              amount: amount,
+            },
+            {
+              headers: {
+                Authorization: authToken,
+                pin: pin,
+              },
+            }
+          );
 
-              return response.data;
-          } catch (error) {
-              throw error;
-          }
+          return response.data;
+        } catch (error) {
+          throw error;
+        }
       };
       ```
 
@@ -249,28 +269,34 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
-      export const transferToken = async (authToken: string, pin: string, walletAddress: string, tokenId: string, amount: string) => {
-          try {
-              const response = await axios.post(
-                  "https://gateway.selendra.org/token/transfer",
-                  {
-                      wallet_address: walletAddress,
-                      token_id: tokenId,
-                      amount: amount,
-                  },
-                  {
-                      headers: {
-                          Authorization: authToken,
-                          pin: pin,
-                      },
-                  },
-              );
+      ```javascript
+      export const transferToken = async (
+        authToken: string,
+        pin: string,
+        walletAddress: string,
+        tokenId: string,
+        amount: string
+      ) => {
+        try {
+          const response = await axios.post(
+            "https://gateway.selendra.org/token/transfer",
+            {
+              wallet_address: walletAddress,
+              token_id: tokenId,
+              amount: amount,
+            },
+            {
+              headers: {
+                Authorization: authToken,
+                pin: pin,
+              },
+            }
+          );
 
-              return response.data;
-          } catch (error) {
-              throw error;
-          }
+          return response.data;
+        } catch (error) {
+          throw error;
+        }
       };
       ```
 

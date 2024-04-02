@@ -5,8 +5,8 @@ const config: DocsThemeConfig = {
   banner: {
     key: "2.0-release",
     text: (
-      <a href="https://nextra.site" target="_blank">
-        🎉 Selendra 2.0 is released. Read more →
+      <a href="https://chainlist.org/chain/1961" target="_blank">
+        🎉 Selendra on Chainlist. Read more →
       </a>
     ),
   },

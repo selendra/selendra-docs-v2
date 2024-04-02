@@ -10,10 +10,9 @@ export default function Footer() {
               <img src="/images/logo.png" alt="logo" class="w-36" />
             </a>
             <div class="mt-6 lg:max-w-xl">
-              <p class="text-sm text-gray-800 dark:text-gray-200">
-                A Substrate-based smart contract network supporting Wasm and
-                EVM, designed for tokenization and incentivizing loyalty
-                programs.
+              <p class="text-md text-gray-800 w-80 dark:text-gray-200">
+                A Scalable and Cost-Effective Multi-Virtual Machine Smart
+                Contract Network
               </p>
             </div>
           </div>
@@ -46,9 +45,9 @@ export default function Footer() {
 
           <div>
             <p class="text-base font-bold tracking-wide text-gray-900 dark:text-sky-500">
-              WALLET IS ALSO AVAILABLE ON
+              GET BITRIEL WALLET ON
             </p>
-            <div class="grid grid-cols-2 items-center px-2">
+            <div class="grid grid-cols-2 items-center">
               <a href="#" class="w-full min-w-xl">
                 <img
                   src="/images/play-store.webp"
