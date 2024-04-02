@@ -70,7 +70,7 @@ axios
 }
 ```
 
-**Error Codes:**
+**Code Errors:**
 
 - 400: Bad Request - Invalid request body or missing required fields.
 - 401: Unauthorized - Authentication failed (invalid or missing access token).
@@ -148,7 +148,7 @@ axios
 }
 ```
 
-**Error Codes:**
+**Code Errors:**
 
 - 400: Bad Request - Invalid request body or missing required fields.
 - 401: Unauthorized - Authentication failed (invalid or missing access token).
@@ -166,9 +166,9 @@ axios
 
 ### Transfer
 
-**Description:** This API endpoint allows authenticated users to transfer their organization's tokens to another wallet address.
+This API endpoint allows authenticated users to transfer their organization's tokens to another wallet address.
 
-**Authentication:** This endpoint requires authentication using a valid access token (implement `isAuthenticated` middleware).
+It requires authentication using a valid access token (implement `isAuthenticated` middleware).
 
 **_API ENDPOINTS_**
 
@@ -220,7 +220,7 @@ axios
   });
 ```
 
-**Response Example (Success):**
+**Success Response:**
 
 ```json
 {
@@ -229,13 +229,13 @@ axios
 }
 ```
 
-**Response Example (Error):**
+**Error Response:**
 
 ```json
 { "status": "ERROR", "message": "User not found" }
 ```
 
-**Error Codes:**
+**Code Errors:**
 
 - 400: Bad Request - Invalid request body or missing required fields.
 - 401: Unauthorized - Authentication failed (invalid or missing access token).
@@ -290,7 +290,7 @@ axios
   });
 ```
 
-**Response Example (Success):**
+**Success Response:**
 
 ```json
 {
@@ -302,7 +302,7 @@ axios
 }
 ```
 
-**Response Example (Error):**
+**Error Response:**
 
 ```json
 {

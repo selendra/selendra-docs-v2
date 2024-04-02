@@ -1,0 +1,281 @@
+## Steps to Build the App:
+
+#### Step 1: Clone Project
+
+1. Open your terminal.
+2. `git clone git@github.com:bitriel/bitriel-rewards.git`
+
+#### Step 2: Navigate into your project directory
+
+1. Run `cd bitriel-rewards` to navigate project directory.
+2. Run `npm install` to install dependencies
+
+#### Step 3: Navigate into your project directory
+
+1. Init eas `eas init`
+2. Build development build `eas build --profile development --platform android --local` on android or `eas build --profile development --platform android --local` on ios
+3. After build, install file to physical or simulator/emulator device
+
+#### Step 4: Start the development server
+
+1. Run `npm run start` to start the development server.
+
+## Screenshots:
+
+|             Screen 1             |             Screen 2             |
+| :------------------------------: | :------------------------------: |
+| ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+
+The app integrates with the following APIs:
+
+1.  **Create User**:
+
+    - URL: https://gateway.selendra.org/account/create
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | username | string | The desired username for the new account. | Yes |
+      | password | string |The password for the new account. | Yes |
+
+      **API example**
+
+      ```
+      export const createWallet = async (username: string, password: string) => {
+          try {
+              const response = await axios.post(`https://gateway.selendra.org/account/create`, {
+                  username: username,
+                  password: password,
+              });
+
+              return response.data;
+          } catch (error) {
+              throw error;
+          }
+      };
+      ```
+
+    - Screenshot:
+
+      |         Screen Register          |
+      | :------------------------------: |
+      | ![Screen 6](/images/screen6.png) |
+
+2.  **Create User PIN**:
+
+    - URL: https://gateway.selendra.org/account/create/pin
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | username | string | The desired username for the new account. | Yes |
+      | pin | string |The desired PIN for the user account. | Yes |
+
+      **API example**
+
+      ```
+      export const createPIN = async (username: string, pin: string, token: string) => {
+          try {
+              const response = await axios.post(
+                  `https://gateway.selendra.org/account/create/pin`,
+                  {
+                      username: username,
+                      pin: pin,
+                  },
+                  {
+                      headers: {
+                          Authorization: token,
+                      },
+                  },
+              );
+
+              return response.data;
+          } catch (error) {
+              throw error;
+          }
+      };
+      ```
+
+    - Screenshot:
+
+      |            Create PIN            |           Confirm Pin            |
+      | :------------------------------: | :------------------------------: |
+      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+
+3.  **Login**:
+
+    - URL: https://gateway.selendra.org/account/login
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | username | string | The username of the user. | Yes |
+      | password | string | The password of the user. | Yes |
+
+      **API example**
+
+      ```
+      export const loginWallet = async (username: string, password: string) => {
+          try {
+              const response = await axios.post("https://gateway.selendra.org/account/login", {
+                  username: username,
+                  password: password,
+              });
+
+              return response.data;
+          } catch (error) {
+              throw error;
+          }
+      };
+      ```
+
+    - Screenshot:
+
+      |                                     Login                                     |
+      | :---------------------------------------------------------------------------: |
+      | <img src="/images/screen1.png" alt="Register User" height="500" width="300"/> |
+
+4.  **Fetch Balance Point**:
+
+    - URL: https://gateway.selendra.org/token/balance
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | token_id | Number | The token ID of the organization's token. | Yes |
+      | wallet_address | string | The Ethereum address of the wallet to check the balance. | Yes |
+
+      **API example**
+
+      ```
+      export const fetchBalance = async (tokenId: string, walletAddress: string): Promise<BalanceType> => {
+          try {
+              const response = await axios.post("https://gateway.selendra.org/token/balance", {
+                  token_id: tokenId,
+                  wallet_address: walletAddress,
+              });
+
+              const balanceData: BalanceType = response.data["data"];
+
+              return balanceData;
+          } catch (error) {
+              throw error;
+          }
+      };
+
+      ```
+
+    - Screenshot:
+
+      |               Home               |               Home               |
+      | :------------------------------: | :------------------------------: |
+      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+
+5.  **Swap Point**:
+
+    - URL: https://gateway.selendra.org/token/swap
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Header:**
+      | Field | Description | Required |
+      | -- | -- | -- |
+      | pin | The user's PIN for authorization (swap from_token to to_token). | Yes |
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | from_token | Number | The token ID of the token being exchanged (from organization). | Yes |
+      | to_token | Number |The token ID of the desired token (to organization). | Yes |
+      | amount | Number | The amount of tokens to be swapped. | Yes |
+
+      **API example**
+
+      ```
+      export const swapPoint = async (authToken: string, pin: string, fromToken: string, toToken: string, amount: string) => {
+          try {
+              const response = await axios.post(
+                  "https://gateway.selendra.org/token/swap",
+                  {
+                      from_token: fromToken,
+                      to_token: toToken,
+                      amount: amount,
+                  },
+                  {
+                      headers: {
+                          Authorization: authToken,
+                          pin: pin,
+                      },
+                  },
+              );
+
+              return response.data;
+          } catch (error) {
+              throw error;
+          }
+      };
+      ```
+
+    - Screenshot:
+
+      |               Swap               |           Confirm Pin            |
+      | :------------------------------: | :------------------------------: |
+      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+
+6.  **Transfer Point**:
+
+    - URL: https://gateway.selendra.org/token/transfer
+    - Method: POST
+    - Content-Type: 'application/json'
+
+      **Request Header:**
+      | Field | Description | Required |
+      | -- | -- | -- |
+      | pin | The user's PIN for authorization (swap from_token to to_token). | Yes |
+
+      **Request Body:**
+      | Field | Type | Description | Required |
+      | -- | -- | -- | -- |
+      | username | string | The desired username for the new account. | Yes |
+      | password | string |The password for the new account. | Yes |
+
+      **API example**
+
+      ```
+      export const transferToken = async (authToken: string, pin: string, walletAddress: string, tokenId: string, amount: string) => {
+          try {
+              const response = await axios.post(
+                  "https://gateway.selendra.org/token/transfer",
+                  {
+                      wallet_address: walletAddress,
+                      token_id: tokenId,
+                      amount: amount,
+                  },
+                  {
+                      headers: {
+                          Authorization: authToken,
+                          pin: pin,
+                      },
+                  },
+              );
+
+              return response.data;
+          } catch (error) {
+              throw error;
+          }
+      };
+      ```
+
+    - Screenshot:
+
+      |            Create PIN            |           Confirm Pin            |
+      | :------------------------------: | :------------------------------: |
+      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
