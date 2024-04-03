@@ -1,4 +1,8 @@
-## Connect API to Frontend
+# Connect API to Frontend
+
+This section shows how to connect to SelSwap API on Bitriel Reward app.
+
+## Run Example App
 
 #### Step 1: Clone Project
 
@@ -20,15 +24,17 @@
 
 1. Run `npm run start` to start the development server.
 
-## Screenshots:
+You will see the following app:
 
-|             Screen 1             |             Screen 2             |
-| :------------------------------: | :------------------------------: |
-| ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+|                              Screen 1                              |                               Screen 2                                |
+| :----------------------------------------------------------------: | :-------------------------------------------------------------------: |
+| <img src="/screenshots/screen1.png" alt="Craete PIN" width="300"/> | <img src="/screenshots/screen1.1.png" alt="Confirm PIN" width="300"/> |
+
+## Integration Details
 
 The app integrates with the following APIs:
 
-1.  **Create User**:
+### 1. Create User
 
     - URL: https://gateway.selendra.org/account/create
     - Method: POST
@@ -65,11 +71,11 @@ The app integrates with the following APIs:
 
     - Screenshot:
 
-      |                                Screen Register                                |
-      | :---------------------------------------------------------------------------: |
-      | <img src="/images/screen6.png" alt="Register User" height="500" width="100"/> |
+      |                            Screen Register                            |
+      | :-------------------------------------------------------------------: |
+      | <img src="/screenshots/screen2.png" alt="Register User" width="300"/> |
 
-2.  **Create User PIN**:
+### 2. Create User PIN
 
     - URL: https://gateway.selendra.org/account/create/pin
     - Method: POST
@@ -83,36 +89,40 @@ The app integrates with the following APIs:
 
       **API example**
 
-      ```
-      export const createPIN = async (username: string, pin: string, token: string) => {
-          try {
-              const response = await axios.post(
-                  `https://gateway.selendra.org/account/create/pin`,
-                  {
-                      username: username,
-                      pin: pin,
-                  },
-                  {
-                      headers: {
-                          Authorization: token,
-                      },
-                  },
-              );
+      ```javascript
+      export const createPIN = async (
+        username: string,
+        pin: string,
+        token: string
+      ) => {
+        try {
+          const response = await axios.post(
+            `https://gateway.selendra.org/account/create/pin`,
+            {
+              username: username,
+              pin: pin,
+            },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
 
-              return response.data;
-          } catch (error) {
-              throw error;
-          }
+          return response.data;
+        } catch (error) {
+          throw error;
+        }
       };
       ```
 
     - Screenshot:
 
-      |            Create PIN            |           Confirm Pin            |
-      | :------------------------------: | :------------------------------: |
-      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+      |                             Create PIN                             |                             Confirm Pin                             |
+      | :----------------------------------------------------------------: | :-----------------------------------------------------------------: |
+      | <img src="/screenshots/screen3.png" alt="Craete PIN" width="300"/> | <img src="/screenshots/screen4.png" alt="Confirm PIN" width="300"/> |
 
-3.  **Login**:
+### 3. Login
 
     - URL: https://gateway.selendra.org/account/login
     - Method: POST
@@ -146,11 +156,11 @@ The app integrates with the following APIs:
 
     - Screenshot:
 
-      |                                     Login                                     |
-      | :---------------------------------------------------------------------------: |
-      | <img src="/images/screen1.png" alt="Register User" height="500" width="300"/> |
+      |                                Login                                 |
+      | :------------------------------------------------------------------: |
+      | <img src="/screenshots/screen1.1.png" alt="Create PIN" width="300"/> |
 
-4.  **Fetch Balance Point**:
+### 4. Fetch Balance Point
 
     - URL: https://gateway.selendra.org/token/balance
     - Method: POST
@@ -189,11 +199,11 @@ The app integrates with the following APIs:
 
     - Screenshot:
 
-      |               Home               |               Home               |
-      | :------------------------------: | :------------------------------: |
-      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+      |                                Home                                 |                                 Home                                 |
+      | :-----------------------------------------------------------------: | :------------------------------------------------------------------: |
+      | <img src="/screenshots/screen5.png" alt="Create PIN" height="300"/> | <img src="/screenshots/screen6.png" alt="Confirm PIN" height="300"/> |
 
-5.  **Swap Point**:
+### 5. Swap Point
 
     - URL: https://gateway.selendra.org/token/swap
     - Method: POST
@@ -246,11 +256,11 @@ The app integrates with the following APIs:
 
     - Screenshot:
 
-      |               Swap               |           Confirm Pin            |
-      | :------------------------------: | :------------------------------: |
-      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+      |                                Swap                                |                             Confirm Pin                             |
+      | :----------------------------------------------------------------: | :-----------------------------------------------------------------: |
+      | <img src="/screenshots/screen9.png" alt="Create PIN" width="300"/> | <img src="/screenshots/screen4.png" alt="Confirm PIN" width="300"/> |
 
-6.  **Transfer Point**:
+### 6. Transfer Point
 
     - URL: https://gateway.selendra.org/token/transfer
     - Method: POST
@@ -302,6 +312,6 @@ The app integrates with the following APIs:
 
     - Screenshot:
 
-      |            Create PIN            |           Confirm Pin            |
-      | :------------------------------: | :------------------------------: |
-      | ![Screen 1](/images/screen1.png) | ![Screen 6](/images/screen6.png) |
+      |                             Create PIN                             |                             Confirm Pin                             |
+      | :----------------------------------------------------------------: | :-----------------------------------------------------------------: |
+      | <img src="/screenshots/screen7.png" alt="Create PIN" width="300"/> | <img src="/screenshots/screen4.png" alt="Confirm PIN" width="300"/> |

@@ -11,8 +11,10 @@ export default function Footer() {
             </a>
             <div class="mt-6 lg:max-w-xl">
               <p class="text-md text-gray-800 w-80 dark:text-gray-200">
-                A Scalable and Cost-Effective Multi-Virtual Machine Smart
-                Contract Network
+                Selendra Network is developed by{" "}
+                <strong>SELENDRA PTE. LTD.</strong> <br />
+                531 UPPER CROSS STEET, #04-95, HONG LIM COMPLEX, SINGAPORE
+                051531
               </p>
             </div>
           </div>
@@ -135,7 +137,7 @@ export default function Footer() {
 
         <div class=" container flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
           <p class="text-sm text-gray-600">
-            © Copyright 2023 Company. All rights reserved.
+            © Copyright 2023-present. All rights reserved.
           </p>
           <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <li>
