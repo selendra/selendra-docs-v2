@@ -8,14 +8,14 @@ Install the necessary dependencies for compiling and running the Selendra node s
 
 #### For Debian
 
-```
+```bash
 sudo apt update
 sudo apt install make clang pkg-config libssl-dev build-essential
 ```
 
 #### For ArchLinux
 
-```
+```bash
 sudo pacman -Syu
 sudo pacman -Syu --needed --noconfirm cmake gcc openssl-1.0 pkgconf git clang
 
@@ -25,19 +25,19 @@ export OPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0"
 
 #### For MacOs
 
-```
+```bash
 brew install cmake pkg-config openssl git llvm
 ```
 
 Install Rust:
 
-```
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 Initialize your Wasm Build environment:
 
-```
+```bash
 ./scripts/init.sh
 ```
 
@@ -96,7 +96,7 @@ Purge any existing Bob chain state:
 
 Start Bob node
 
-```
+```bash
 ./target/release/selendra \
 --base-path /tmp/bob \
 --chain local \

@@ -1,6 +1,6 @@
-## Architecture
+# Architecture
 
-**Substrate-based architecture**
+## Substrate-based architecture
 
 Selendra is a proof-of-stake network built on Substrate, utilizing GRANDPA for finality and BABE for block production as consensus mechanisms. It incorporates various general pallets, core libraries, and a forkless runtime, along with Frontier for EVM compatibility. Below is the summary of Selendra's architecture based on the Substrate:
 
@@ -31,7 +31,7 @@ Selendra is a proof-of-stake network built on Substrate, utilizing GRANDPA for f
 
 Selendra's architecture leverages Substrate's flexibility to enable developers to create customized blockchains by utilizing different levels of abstraction, libraries tailored for specific functionalities, and compatibility with WebAssembly for efficient blockchain development. The main objective of Selendra is to be a compatible EVM and Wasm smart contract network, allowing developers to build efficient blockchain applications with ease.
 
-**Wasm and EVM support and other features **
+## Wasm and EVM support and other features
 
 Selendra Network embraces both WebAssembly (Wasm) and Ethereum Virtual Machine (EVM) environments, enabling developers to leverage familiar tools and programming languages across multiple platforms and chains. This support allows for seamless development and deployment of smart contracts on diverse blockchain ecosystems
 
@@ -55,9 +55,9 @@ Selendra Network will introduce Selendra zkEVM, a zero-knowledge Ethereum Virtua
 
 Selendra's commitment to supporting multiple virtual machines, ensuring scalability through forkless upgrades, promoting interoperability with XVM, and introducing privacy-focused solutions like Selendra zkEVM showcases its dedication to advancing blockchain technology with a focus on efficiency, security, and innovation.
 
-### List of tools from Substrate used for Selendra so far
+## List of tools from Substrate used for Selendra so far
 
-[+] Substrate general pallett:
+**[+] Substrate general pallett:**
 
 - frame_system
 - pallet_timestamp,
@@ -66,7 +66,7 @@ Selendra's commitment to supporting multiple virtual machines, ensuring scalabil
 - pallet_balances
 - pallet_transaction_payment:
 
-[+] Substrate Staking and consensus
+**[+] Substrate Staking and consensus**
 
 - pallet_authorship
 - pallet_babe
@@ -81,7 +81,7 @@ Selendra's commitment to supporting multiple virtual machines, ensuring scalabil
 - pallet_bags_list
 - pallet_fast_unstake
 
-[+] Substrate Governance
+**[+] Substrate Governance**
 
 - pallet_treasury: It like pot that keep balance from slash and other (our chain most of balance are burn not go here)
 - pallet_conviction_voting
@@ -91,7 +91,7 @@ Selendra's commitment to supporting multiple virtual machines, ensuring scalabil
 - pallet_bounties: Request token from treasury
 - pallet_child_bounties
 
-[+] Substrate utility
+**[+] Substrate utility**
 
 - pallet_utility
 - pallet_multisig
@@ -101,14 +101,14 @@ Selendra's commitment to supporting multiple virtual machines, ensuring scalabil
 - pallet_identity
 - pallet_vesting
 
-[+] Substrate Evm
+**[+] Substrate Evm**
 
 - pallet_evm: the EVM pallet uses [SputnikVM](https://github.com/rust-blockchain/evm) as the underlying EVM engine The engine is overhauled so that it's [modular](https://github.com/corepaper/evm)
 - pallet_ethereum: The Ethereum pallet works together with EVM pallet to provide full emulation for Ethereum block processing
 - pallet_base_fee: handle fee on pallet evm
 - pallet_custom_signatures: transter between evm and substrate account
 
-[+] Asset and contract
+**[+] Asset and contract**
 
 - pallet_contracts
 - pallet_assets: create asset without have to write code.

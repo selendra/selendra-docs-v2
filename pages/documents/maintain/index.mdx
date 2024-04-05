@@ -24,12 +24,12 @@ To connect to the Selendra node, use the endpoint in your JavaScript apps like s
 
 ```javascript
 
-// Using the Polkadot Mainnet Endpoint
+// Using the Selendra Mainnet Endpoint
 const { ApiPromise, WsProvider } = require('@polkadot/api');
 async () => {
   // Construct a provider with the endpoint URL
   const provider = new WsProvider('wss://rpc.selendra.org/');
-  // Create an API instance for Polkadot
+  // Create an API instance for Selendra
   const api = await ApiPromise.create({ provider });
   // ...
 
