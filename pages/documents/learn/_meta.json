@@ -1,3 +1,6 @@
 {
-  "index": "Architecture"
+  "index": "Architecture",
+  "fees": "Fee",
+  "parameters": "Paramenters",
+  "explorer": "Explorer"
 }
