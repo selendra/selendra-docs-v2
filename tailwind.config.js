@@ -19,7 +19,11 @@ module.exports = {
         // Add more custom colors as needed
       },
     },
+    fontFamily: {
+      space: ["Space Grotesk", "sans-serif"],
+    },
   },
+
   plugins: [nextui()],
   darkMode: "class",
 };

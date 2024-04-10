@@ -5,15 +5,21 @@ const config: DocsThemeConfig = {
   banner: {
     key: "2.0-release",
     text: (
-      <a href="https://chainlist.org/chain/1961" target="_blank">
-        🎉 Selendra on Chainlist. Read more →
-      </a>
+      // <a href="https://chainlist.org/chain/1961" target="_blank">
+      //   🎉 Selendra on Chainlist. Read more →
+      // </a>
+      <p>This is a live document. Continuous updates are forthcoming!</p>
     ),
   },
   logo: (
-    <>
-      <img src="/images/logo.png" width={120} alt="Selendra" />
-    </>
+    <div className="flex items-center gap-2">
+      <img
+        src="/logo/sel-logo-blue-notext.png"
+        width={30}
+        alt="Light Mode Logo"
+      />
+      <p className="font-space text-xl font-semibold">Selendra</p>
+    </div>
   ),
   project: {
     link: "https://github.com/selendra",

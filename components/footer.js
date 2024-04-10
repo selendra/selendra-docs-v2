@@ -3,12 +3,17 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer class="px-3 pt-12 lg:px-9 border-t-2 bg-gray-50 dark:bg-zinc-900">
+      <footer class="px-3 pt-12 lg:px-9 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900">
         <div class="container grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
           <div class="sm:col-span-2">
-            <a href="#" class="inline-flex items-center">
-              <img src="/images/logo.png" alt="logo" class="w-36" />
-            </a>
+            <div className="flex items-center gap-2">
+              <img
+                src="/logo/sel-logo-blue-notext.png"
+                width={30}
+                alt="Light Mode Logo"
+              />
+              <p className="font-space text-xl font-semibold">Selendra</p>
+            </div>
             <div class="mt-6 lg:max-w-xl">
               <p class="text-md text-gray-800 w-80 dark:text-gray-200">
                 Selendra Network is developed by{" "}
@@ -66,7 +71,7 @@ export default function Footer() {
               </a>
             </div>
             <p class="text-base font-bold tracking-wide text-gray-900 dark:text-sky-500 mt-10">
-              Contacts
+              Connect
             </p>
             <div class="flex items-center gap-4 mt-3">
               <div
@@ -76,18 +81,14 @@ export default function Footer() {
                 }
               >
                 <svg
-                  width="23"
-                  height="20"
-                  viewBox="0 0 27 26"
-                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-github"
+                  viewBox="0 0 16 16"
                 >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M13.442 0C6.079 0 .108 5.949.108 13.287c0 5.87 3.821 10.85 9.119 12.608.666.123.91-.288.91-.639 0-.317-.012-1.363-.018-2.474-3.709.804-4.491-1.568-4.491-1.568-.607-1.535-1.48-1.944-1.48-1.944-1.21-.825.09-.808.09-.808 1.34.094 2.044 1.37 2.044 1.37 1.19 2.031 3.119 1.444 3.88 1.104.12-.858.465-1.445.847-1.776-2.962-.336-6.075-1.476-6.075-6.567 0-1.45.521-2.636 1.374-3.567-.138-.334-.595-1.685.13-3.516 0 0 1.118-.357 3.667 1.363a12.804 12.804 0 0 1 3.337-.448c1.133.005 2.274.153 3.34.448 2.545-1.72 3.663-1.363 3.663-1.363.725 1.83.269 3.182.13 3.516.855.931 1.373 2.116 1.373 3.567 0 5.104-3.12 6.227-6.088 6.556.478.412.904 1.22.904 2.46 0 1.778-.015 3.21-.015 3.647 0 .354.24.767.916.637 5.294-1.758 9.11-6.737 9.11-12.606C26.775 5.95 20.805 0 13.442 0Z"
-                    fill="#000"
-                  ></path>
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                 </svg>
               </div>
               <div
@@ -97,16 +98,14 @@ export default function Footer() {
                 }
               >
                 <svg
-                  width="23"
-                  height="20"
-                  viewBox="0 0 23 20"
-                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-telegram"
+                  viewBox="0 0 16 16"
                 >
-                  <path
-                    d="m8.468 18.267.343-5.287 9.405-8.65c.416-.387-.086-.574-.637-.237L5.969 11.58.95 9.955C-.13 9.643-.141 8.88 1.194 8.33L20.75.631c.894-.412 1.75.225 1.408 1.625l-3.33 16.01c-.234 1.138-.907 1.413-1.838.888l-5.07-3.825-2.437 2.413c-.281.287-.514.525-1.016.525Z"
-                    fill="#000"
-                  ></path>
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" />
                 </svg>
               </div>
 
@@ -116,47 +115,19 @@ export default function Footer() {
                   window.open("https://twitter.com/selendranetwork", "_blank")
                 }
               >
-                <svg
-                  width="24"
-                  height="20"
-                  viewBox="0 0 24 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="24" height="24" viewBox="0 0 248 204">
                   <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M20.886 5.988c0-.2-.004-.397-.013-.594a9.327 9.327 0 0 0 2.291-2.378 9.169 9.169 0 0 1-2.637.723 4.612 4.612 0 0 0 2.02-2.54 9.238 9.238 0 0 1-2.917 1.114 4.594 4.594 0 0 0-7.828 4.189 13.041 13.041 0 0 1-9.468-4.799 4.59 4.59 0 0 0 1.422 6.131 4.58 4.58 0 0 1-2.08-.573c-.002.018-.002.037-.002.058A4.595 4.595 0 0 0 5.36 11.82a4.61 4.61 0 0 1-2.075.08 4.6 4.6 0 0 0 4.291 3.19 9.219 9.219 0 0 1-5.705 1.965c-.37 0-.736-.02-1.096-.064a13.007 13.007 0 0 0 7.042 2.063c8.448 0 13.07-6.998 13.07-13.067Z"
-                    fill="#000"
-                  ></path>
+                    fill="currentColor"
+                    d="M221.95 51.29c.15 2.17.15 4.34.15 6.53 0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07a50.338 50.338 0 0 0 22.8-.87C27.8 117.2 10.85 96.5 10.85 72.46v-.64a50.18 50.18 0 0 0 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71a143.333 143.333 0 0 0 104.08 52.76 50.532 50.532 0 0 1 14.61-48.25c20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26a50.69 50.69 0 0 1-22.2 27.93c10.01-1.18 19.79-3.86 29-7.95a102.594 102.594 0 0 1-25.2 26.16z"
+                  />
                 </svg>
               </div>
             </div>
           </div>
         </div>
 
-        <div class=" container flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-          <p class="text-sm text-gray-600">
-            © Copyright 2020-present. All rights reserved.
-          </p>
-          <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-            <li>
-              <a
-                href="#"
-                class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-                Privacy &amp; Cookies Policy
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-                Disclaimer
-              </a>
-            </li>
-          </ul>
+        <div class=" container flex flex-col-reverse justify-start pb-10 lg:flex-row">
+          <p class="text-sm">© Copyright 2020-present. All rights reserved.</p>
         </div>
       </footer>
     </>
