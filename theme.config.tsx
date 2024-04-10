@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
       // <a href="https://chainlist.org/chain/1961" target="_blank">
       //   🎉 Selendra on Chainlist. Read more →
       // </a>
-      <p>This is a live document. Continuous updates are forthcoming!</p>
+      <p>🌱 This is a live document. Continuous updates are forthcoming!</p>
     ),
   },
   logo: (
