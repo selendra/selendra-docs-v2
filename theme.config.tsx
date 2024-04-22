@@ -56,7 +56,7 @@ const config: DocsThemeConfig = {
   ),
   useNextSeoProps: () => {
     return {
-      titleTemplate: "%s – Selendra",
+      titleTemplate: "A scalable and cost-effective multi-virtual machine smart contract platform– Selendra Network",
     };
   },
   toc: {
