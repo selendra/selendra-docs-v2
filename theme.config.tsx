@@ -56,7 +56,7 @@ const config: DocsThemeConfig = {
   ),
   useNextSeoProps: () => {
     return {
-      titleTemplate: "A scalable and cost-effective multi-virtual machine smart contract platform– Selendra Network",
+      titleTemplate: "Selendra Network is an EVM-compatible blockchain platform built with Substrate, focusing on making blockchain accessible and practical for everyday use in Cambodia's emerging digital economy",
     };
   },
   toc: {
